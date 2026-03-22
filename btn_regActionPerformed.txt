@@ -1,0 +1,64 @@
+   if (flag) {
+                if (textField_vehiclePlateNo.equals("")
+                || textField_vehicleEngineNum.equals("")
+                || textField_vehicleVinNo.equals("")
+                || textField_vehicleColor.equals("")
+                || textField_vehicleOwnerName.equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "لطفن معلومات را درج کنید!");
+            flag=false;
+            return;
+        }    
+        }
+        else{
+        registerVehicle rv = new registerVehicle();
+
+        String vehicleType = jComboBox_vType.getSelectedItem().toString();
+        String vehicleMakeYear = jComboBox_vYear.getSelectedItem().toString();
+        String vehiclePlate = textField_vehiclePlateNo.getText();
+        String vin = textField_vehicleEngineNum.getText();
+        String engNr = textField_vehicleVinNo.getText();
+        String color = textField_vehicleColor.getText();
+        String province = jComboBox_vProvince.getSelectedItem().toString();
+        String ownerName = textField_vehicleOwnerName.getText();
+        String countryMake = jComboBox_vCountry.getSelectedItem().toString();
+        String vehicleBrand = jComboBox_vBrand.getSelectedItem().toString();
+
+//        try {
+//            //CHECK THE DUPLICATE PLATE NUMBERS
+//            String checkQuery = "SELECT * FROM vehiclesdetails WHERE regNr="
+//                    + "'" + vehiclePlate + "'";
+//
+//            Statement stCheck;
+//
+//            stCheck = con.createStatement();
+//
+//            ResultSet rsCheck = stCheck.executeQuery(checkQuery);
+//
+//            if (rsCheck.next()) {
+//
+//                JOptionPane.showMessageDialog(rv, "پلیت نمبر در سیستم وجود دارد!");
+//                return;
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(registerVehicle.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+        f.insertVehiclesDetails(
+                vehicleType,
+                vehicleMakeYear,
+                vehiclePlate,
+                vin,
+                engNr,
+                color,
+                province,
+                ownerName,
+                countryMake,
+                vehicleBrand,
+                rv
+        );
+        }
+        textField_vehiclePlateNo.setText("");
+        textField_vehicleEngineNum.setText("");
+        textField_vehicleVinNo.setText("");
+        textField_vehicleColor.setText("");
+        textField_vehicleOwnerName.setText("");
